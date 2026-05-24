@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Powered Hiring & Skill Gap Analysis</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for beautiful charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- PDF.js for parsing PDF Resumes client-side -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-brain-circuit logo-icon"></i>
+                <div class="logo-text">
+                    <h2>AI-Hiring</h2>
+                    <span>Skill Gap Engine</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <button class="nav-btn active" id="btn-overview" data-target="section-overview">
+                    <i class="fa-solid fa-rectangle-list"></i>
+                    <span>Project Overview</span>
+                </button>
+                <button class="nav-btn" id="btn-analyzer" data-target="section-analyzer">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <span>ML Resume Analyzer</span>
+                </button>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="server-status">
+                    <span class="status-dot offline" id="server-status-dot"></span>
+                    <span class="status-text" id="server-status-text">Connecting to ML Backend...</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- SECTION 1: PROJECT OVERVIEW -->
+            <section id="section-overview" class="content-section active">
+                <header class="section-header">
+                    <h1>AI-Powered Hiring & Skill Gap Analysis</h1>
+                    <p class="section-tagline">An interactive ML-based candidate evaluation and career progression engine</p>
+                </header>
+                
+                <div class="overview-grid">
+                    <!-- Project Summary Card -->
+                    <div class="glass-card main-summary">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-circle-info card-icon cyan"></i>
+                            <h3>1. Introduction</h3>
+                        </div>
+                        <p><strong>AI-Powered Hiring and Skill Gap Analysis</strong> is a Machine Learning-based system designed to optimize the recruitment workflow and identify skill discrepancies in candidates. The platform automates resume analysis, evaluates technical proficiency against specific job descriptions, and matches profiles with suitable roles.</p>
+                        <p>By using Artificial Intelligence, this project reduces manual recruiting efforts and helps candidates understand their custom upskilling paths to bridge the gap between their current capabilities and current industry requirements.</p>
+                    </div>
+
+                    <!-- Objectives Card -->
+                    <div class="glass-card objectives">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-bullseye card-icon purple"></i>
+                            <h3>2. Objectives</h3>
+                        </div>
+                        <ul class="bullet-list">
+                            <li>Automate the screening and categorization of resumes using Natural Language Processing.</li>
+                            <li>Develop classification models using Scikit-Learn (Logistic Regression, Random Forest, Decision Tree) to predict suitability.</li>
+                            <li>Perform detailed Skill Gap Analysis comparing candidate skills to Job Descriptions.</li>
+                            <li>Provide recommendations for skill development to help candidates qualify for desired roles.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Methodology Card -->
+                    <div class="glass-card methodology full-width">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-diagram-project card-icon mint"></i>
+                            <h3>3. Methodology & pipeline Architecture</h3>
+                        </div>
+                        <div class="methodology-steps">
+                            <div class="m-step">
+                                <div class="step-num">1</div>
+                                <h4>Data Collection & Input</h4>
+                                <p>Extracting text from resumes (PDF/TXT) and inputting specific Job Descriptions.</p>
+                            </div>
+                            <div class="m-step">
+                                <div class="step-num">2</div>
+                                <h4>NLP Text Cleaning</h4>
+                                <p>Tokenizing raw text, removing English stop words, filtering out noise and special characters.</p>
+                            </div>
+                            <div class="m-step">
+                                <div class="step-num">3</div>
+                                <h4>TF-IDF Feature Extraction</h4>
+                                <p>Converting clean text tokens into statistical vectors using Scikit-Learn's TF-IDF Vectorizer.</p>
+                            </div>
+                            <div class="m-step">
+                                <div class="step-num">4</div>
+                                <h4>Model Classification</h4>
+                                <p>Training & predicting suitability (Highly, Moderately, or Not Suitable) via Logistic Regression, DT, and Random Forest.</p>
+                            </div>
+                            <div class="m-step">
+                                <div class="step-num">5</div>
+                                <h4>Skill Gap & Course Suggestions</h4>
+                                <p>Evaluating category-wise skill overlaps and outputting actionable upskilling pathways.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Libraries Card -->
+                    <div class="glass-card tools">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-screwdriver-wrench card-icon gold"></i>
+                            <h3>4. Tech Stack & ML Tools</h3>
+                        </div>
+                        <div class="tools-badges">
+                            <div class="badge"><i class="fa-brands fa-python"></i> Python 3</div>
+                            <div class="badge"><i class="fa-solid fa-flask"></i> Flask API</div>
+                            <div class="badge"><i class="fa-solid fa-gears"></i> Scikit-Learn</div>
+                            <div class="badge"><i class="fa-solid fa-table"></i> Pandas</div>
+                            <div class="badge"><i class="fa-solid fa-calculator"></i> NumPy</div>
+                            <div class="badge"><i class="fa-solid fa-chart-line"></i> Chart.js & SVG</div>
+                            <div class="badge"><i class="fa-solid fa-file-pdf"></i> PDF.js Parser</div>
+                        </div>
+                    </div>
+
+                    <!-- Project Advantages -->
+                    <div class="glass-card advantages">
+                        <div class="card-icon-header">
+                            <i class="fa-solid fa-star card-icon red"></i>
+                            <h3>5. Core Applications & Benefits</h3>
+                        </div>
+                        <ul class="bullet-list">
+                            <li><strong>HR Recruitment:</strong> Reduces hours of manual CV scanning.</li>
+                            <li><strong>Candidate Upskilling:</strong> Pinpoints missing courses, libraries, and frameworks.</li>
+                            <li><strong>Model Transparency:</strong> Compares predictions across multiple standard ML models.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="cta-banner">
+                    <h3>Ready to test the Machine Learning Pipeline?</h3>
+                    <button class="primary-btn" onclick="switchSection('section-analyzer')">
+                        <span>Go to Resume Analyzer</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- SECTION 2: RESUME ANALYZER (THE ML PIPELINE DEMO) -->
+            <section id="section-analyzer" class="content-section">
+                <header class="section-header">
+                    <h1>ML Resume Analyzer & Pipeline</h1>
+                    <p class="section-tagline">Upload a resume and job description to execute the NLP & Scikit-Learn pipeline in real time</p>
+                </header>
+
+                <div class="analyzer-layout">
+                    <!-- Left Input Control Panel -->
+                    <div class="input-panel glass-card">
+                        <h3><i class="fa-solid fa-sliders"></i> Pipeline Inputs</h3>
+                        
+                        <!-- Presets Selector -->
+                        <div class="form-group">
+                            <label for="preset-selector">Load Preset Demo Data:</label>
+                            <select id="preset-selector">
+                                <option value="" disabled selected>-- Select a Preset Profile --</option>
+                                <option value="preset-ml-engineer">1. Machine Learning Engineer (High Suitability Match)</option>
+                                <option value="preset-data-analyst">2. Data Analyst (Moderate Suitability Match)</option>
+                                <option value="preset-web-dev">3. Full Stack Developer (Low Suitability Match)</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Target Role Selector -->
+                        <div class="form-group">
+                            <label for="target-role">Select Target Job Role:</label>
+                            <select id="target-role">
+                                <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                                <option value="Data Scientist">Data Scientist</option>
+                                <option value="MLOps Engineer">MLOps Engineer</option>
+                                <option value="NLP Specialist">NLP Specialist</option>
+                                <option value="Computer Vision Engineer">Computer Vision Engineer</option>
+                                <option value="Research Scientist">Research Scientist</option>
+                            </select>
+                        </div>
+
+                        <!-- Resume File Upload / Text Paste -->
+                        <div class="form-group">
+                            <label>Resume (PDF or Text):</label>
+                            <div class="dropzone" id="resume-dropzone">
+                                <i class="fa-solid fa-file-arrow-up drop-icon"></i>
+                                <p>Drag & drop PDF/TXT file here, or click to upload</p>
+                                <input type="file" id="resume-file-input" accept=".pdf,.txt" style="display: none;">
+                            </div>
+                            <div class="file-info" id="file-info-container" style="display: none;">
+                                <i class="fa-solid fa-file-lines text-cyan"></i>
+                                <span id="uploaded-filename">resume.pdf</span>
+                                <button type="button" class="remove-file-btn" id="remove-file-btn"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            
+                            <textarea id="resume-text-input" placeholder="Or paste full resume text here..." rows="8"></textarea>
+                        </div>
+
+                        <!-- Job Description Text Paste -->
+                        <div class="form-group">
+                            <label for="job-desc-input">Job Description (JD) Requirements:</label>
+                            <textarea id="job-desc-input" placeholder="Paste target job description requirements here..." rows="8"></textarea>
+                        </div>
+
+                        <!-- Trigger Button -->
+                        <button class="analyze-btn" id="btn-run-analysis">
+                            <i class="fa-solid fa-circle-play"></i>
+                            <span>Run Scikit-Learn Pipeline</span>
+                        </button>
+                    </div>
+
+                    <!-- Right Execution & Output Results Dashboard -->
+                    <div class="dashboard-panel">
+                        <!-- Pipeline Execution Tracker (Spinner/Step Animations) -->
+                        <div class="pipeline-loader glass-card" id="pipeline-loader" style="display: none;">
+                            <h3 class="loader-title">Executing ML Evaluation Pipeline</h3>
+                            <div class="pipeline-steps-vertical">
+                                <div class="p-loader-step" id="step-load-nlp">
+                                    <div class="status-indicator"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+                                    <div class="step-detail">
+                                        <h4>Phase 1: NLP Text Preprocessing</h4>
+                                        <p>Lowercasing, cleaning symbols, removing stop words, tokenizing...</p>
+                                    </div>
+                                </div>
+                                <div class="p-loader-step" id="step-load-tfidf">
+                                    <div class="status-indicator"><i class="fa-solid fa-circle"></i></div>
+                                    <div class="step-detail">
+                                        <h4>Phase 2: TF-IDF & Cosine Similarity</h4>
+                                        <p>Fitting Scikit-Learn TfidfVectorizer, calculating vector similarity...</p>
+                                    </div>
+                                </div>
+                                <div class="p-loader-step" id="step-load-classifiers">
+                                    <div class="status-indicator"><i class="fa-solid fa-circle"></i></div>
+                                    <div class="step-detail">
+                                        <h4>Phase 3: Training Classifiers & Predictions</h4>
+                                        <p>Running Logistic Regression, Random Forest, and Decision Tree...</p>
+                                    </div>
+                                </div>
+                                <div class="p-loader-step" id="step-load-gap">
+                                    <div class="status-indicator"><i class="fa-solid fa-circle"></i></div>
+                                    <div class="step-detail">
+                                        <h4>Phase 4: Skill Gap & Recommendations</h4>
+                                        <p>Analyzing category intersections, formulating course map...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Empty State Dashboard -->
+                        <div class="glass-card empty-dashboard" id="empty-dashboard-view">
+                            <i class="fa-solid fa-chart-line-up-fire dashboard-icon"></i>
+                            <h2>Pipeline Awaiting Inputs</h2>
+                            <p>Select a preset or upload your resume, paste the target Job Description, and execute the analysis to visualize ML results.</p>
+                        </div>
+
+                        <!-- Full Results Dashboard (Hidden until analyzed) -->
+                        <div class="analysis-results-wrapper" id="results-dashboard-view" style="display: none;">
+                            
+                            <!-- KPI Score Cards Grid -->
+                            <div class="kpi-grid">
+                                <!-- Radial Match Score -->
+                                <div class="glass-card kpi-card radial-score-card">
+                                    <h4>Overall Fit Score</h4>
+                                    <div class="radial-progress-wrapper">
+                                        <svg class="radial-svg" viewBox="0 0 100 100">
+                                            <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                                            <circle class="circle-progress" id="results-radial-progress" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                                        </svg>
+                                        <div class="radial-value" id="results-overall-score">0%</div>
+                                    </div>
+                                </div>
+
+                                <!-- Mini Metrics Grid -->
+                                <div class="kpi-metrics-subgrid">
+                                    <!-- Cosine Similarity -->
+                                    <div class="glass-card kpi-card">
+                                        <span class="kpi-title">Cosine Similarity (TF-IDF)</span>
+                                        <div class="kpi-value-row">
+                                            <span class="kpi-number" id="results-cosine-similarity">0%</span>
+                                            <i class="fa-solid fa-wave-square metric-icon text-cyan"></i>
+                                        </div>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" id="results-cosine-bar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Skill Match Score -->
+                                    <div class="glass-card kpi-card">
+                                        <span class="kpi-title">Skill Match Score</span>
+                                        <div class="kpi-value-row">
+                                            <span class="kpi-number" id="results-skill-score">0%</span>
+                                            <i class="fa-solid fa-list-check metric-icon text-purple"></i>
+                                        </div>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" id="results-skill-bar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ATS Compatibility -->
+                                    <div class="glass-card kpi-card">
+                                        <span class="kpi-title">ATS Format Score</span>
+                                        <div class="kpi-value-row">
+                                            <span class="kpi-number" id="results-ats-score">0%</span>
+                                            <i class="fa-solid fa-file-contract metric-icon text-mint"></i>
+                                        </div>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" id="results-ats-bar" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Tabs for Pipeline Analysis -->
+                            <div class="results-tabs glass-card">
+                                <div class="tab-headers">
+                                    <button class="tab-btn active" data-tab="tab-nlp">1. Preprocessing</button>
+                                    <button class="tab-btn" data-tab="tab-tfidf">2. TF-IDF Vectors</button>
+                                    <button class="tab-btn" data-tab="tab-models">3. ML Classifiers</button>
+                                    <button class="tab-btn" data-tab="tab-gap">4. Skill Gaps</button>
+                                </div>
+
+                                <div class="tab-contents">
+                                    <!-- TAB 1: PREPROCESSING -->
+                                    <div class="tab-pane active" id="tab-nlp">
+                                        <div class="nlp-analysis-container">
+                                            <div class="stats-row">
+                                                <div class="stat-badge">
+                                                    Original Characters: <strong id="nlp-orig-char">0</strong>
+                                                </div>
+                                                <div class="stat-badge">
+                                                    Cleaned Tokens: <strong id="nlp-clean-tokens">0</strong>
+                                                </div>
+                                            </div>
+                                            <h4>NLP Tokenized Sample (First 40 words):</h4>
+                                            <div class="token-cloud" id="nlp-token-cloud">
+                                                <!-- Tokens populated dynamically -->
+                                            </div>
+                                            <p class="panel-note"><i class="fa-solid fa-circle-info"></i> Standard stop words (like 'and', 'the', 'with') and non-alphanumeric punctuation have been removed to expose core semantic terms.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- TAB 2: TF-IDF VECTORS -->
+                                    <div class="tab-pane" id="tab-tfidf">
+                                        <div class="tfidf-columns">
+                                            <!-- Resume Keywords -->
+                                            <div class="tfidf-col">
+                                                <h4>Resume Top TF-IDF Terms</h4>
+                                                <div class="keywords-list" id="tfidf-resume-keywords">
+                                                    <!-- Keywords populated dynamically -->
+                                                </div>
+                                            </div>
+                                            <!-- JD Keywords -->
+                                            <div class="tfidf-col">
+                                                <h4>Job Description Top TF-IDF Terms</h4>
+                                                <div class="keywords-list" id="tfidf-job-keywords">
+                                                    <!-- Keywords populated dynamically -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="panel-note"><i class="fa-solid fa-circle-info"></i> TF-IDF (Term Frequency-Inverse Document Frequency) measures the statistical importance of words relative to standard English text. The weights are used to compute the Cosine Similarity vector angle.</p>
+                                    </div>
+
+                                    <!-- TAB 3: CLASSIFIER MODELS -->
+                                    <div class="tab-pane" id="tab-models">
+                                        <div class="classifiers-container">
+                                            <div class="models-predictions-grid">
+                                                <!-- LR Card -->
+                                                <div class="model-prediction-card">
+                                                    <div class="model-meta">
+                                                        <h5>Logistic Regression</h5>
+                                                        <span class="prediction-pill" id="pred-lr">Classifying...</span>
+                                                    </div>
+                                                    <div class="model-chart-mini">
+                                                        <canvas id="chart-lr-probs" height="120"></canvas>
+                                                    </div>
+                                                </div>
+                                                <!-- DT Card -->
+                                                <div class="model-prediction-card">
+                                                    <div class="model-meta">
+                                                        <h5>Decision Tree</h5>
+                                                        <span class="prediction-pill" id="pred-dt">Classifying...</span>
+                                                    </div>
+                                                    <div class="model-chart-mini">
+                                                        <canvas id="chart-dt-probs" height="120"></canvas>
+                                                    </div>
+                                                </div>
+                                                <!-- RF Card -->
+                                                <div class="model-prediction-card">
+                                                    <div class="model-meta">
+                                                        <h5>Random Forest</h5>
+                                                        <span class="prediction-pill" id="pred-rf">Classifying...</span>
+                                                    </div>
+                                                    <div class="model-chart-mini">
+                                                        <canvas id="chart-rf-probs" height="120"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="feature-importance-section">
+                                                <h4>Ensemble Model Feature Importance (Random Forest):</h4>
+                                                <p class="small-desc">Top vocabulary terms that influenced the decision-making boundaries for Suitability classification:</p>
+                                                <div class="feature-importances-bar-chart" id="rf-feature-importances">
+                                                    <!-- Dynamically created bar graphs -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- TAB 4: SKILL GAPS -->
+                                    <div class="tab-pane" id="tab-gap">
+                                        <div class="skill-gap-layout">
+                                            <!-- Left side: Category progress bars -->
+                                            <div class="skills-radar-container">
+                                                <h4>Skill Match by Category:</h4>
+                                                <div class="skills-bar-chart" id="gap-skills-bars">
+                                                    <!-- Category bars populated dynamically -->
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Right side: Matched/Missing lists & recommendations -->
+                                            <div class="skills-gap-detail">
+                                                <h4>Matched vs. Missing Skills Inventory</h4>
+                                                <div class="skill-inventory-list" id="gap-inventory-container">
+                                                    <!-- Extracted categories -->
+                                                </div>
+
+                                                <h4 class="recs-title-header"><i class="fa-solid fa-graduation-cap"></i> Upskilling Recommendations</h4>
+                                                <div class="skill-recs-list" id="gap-recs-container">
+                                                    <!-- Recommendations populated dynamically -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Script connection -->
+    <script src="app.js"></script>
+</body>
+</html>
