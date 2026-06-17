@@ -1,0 +1,22 @@
+ANKIT KUMAR - RESUME
+Email: ankit@company.com
+Address: Bangalore, Karnataka
+
+SUMMARY:
+Machine Learning Engineer with 3 years of experience specializing in Natural Language Processing, predictive modeling, and vector similarities.
+
+SKILLS:
+- Languages: Python, SQL, Java, Javascript
+- ML Core: Scikit-learn, Regression, Supervised learning, Cross-validation, Feature engineering
+- Deep Learning: PyTorch, CNN, Transformers, NLP
+- MLOps & Tools: Git, Docker, AWS, FastAPI, Linux, CI/CD
+
+EXPERIENCE:
+Machine Learning Developer | Chronosync Labs (2023 - Present)
+- Built NLP parsing algorithms using PyTorch and scikit-learn models.
+- Set up Docker container images for microservices deployed on AWS.
+- Configured Git version control pipelines for automated CI/CD checks.
+
+EDUCATION:
+B.Tech in Computer Science | Global Institute
+Coursework: Linear Algebra, Probability & Statistics, Advanced Algorithms

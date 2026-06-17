@@ -1,0 +1,13 @@
+
+        PRIYA DEV - CV
+        Email: priya@email.com | Git: github.com/priya
+        
+        SUMMARY:
+        Machine learning professional with 3 years of experience. High proficiency in python, SQL, PyTorch, scikit-learn, Docker, and AWS.
+        
+        EXPERIENCE:
+        ML Engineer at TechSoft (2023 - Present)
+        - Trained CNN models in PyTorch.
+        - Deployed microservice endpoints on AWS SageMaker.
+        - Used Docker and Git for CI/CD version control.
+        
